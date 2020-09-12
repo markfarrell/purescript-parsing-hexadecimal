@@ -1,6 +1,6 @@
 {
   "name": "purescript-parsing-hexadecimal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "repository": {                                                           
     "type": "git",                                                          
@@ -19,7 +19,7 @@
     "purescript-parsing": "^5.0.3"
   },
   "devDependencies": {
-    "purescript-parsing-expect": "markfarrell/purescript-parsing-expect#^0.0.1",
+    "purescript-parsing-expect": "markfarrell/purescript-parsing-expect",
     "purescript-psci-support": "^4.0.0"
   }
 }
