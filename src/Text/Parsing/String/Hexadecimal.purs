@@ -20,7 +20,7 @@ import Text.Parsing.Parser.String as S
 import Text.Parsing.Char.Hexadecimal as A
 
 -- | Consumes a non-empty string of decimal characters (0-9+), or fails otherwise.
-decimal :: forall a m. S.StringLike a => Monad m => ParserT a m String
+decimal :: forall m. Monad m => ParserT String m String
 decimal = do
   x <- Array.fromFoldable <$> List.many A.decimal
   case Array.length x > 0 of
@@ -28,7 +28,7 @@ decimal = do
     true  -> pure $ foldMap singleton x 
 
 -- | Consumes a non-empty string of uppercase hexadecimal characters (0-F+), or fails otherwise.
-uppercase :: forall a m. S.StringLike a => Monad m => ParserT a m String
+uppercase :: forall m. Monad m => ParserT String m String
 uppercase = do
   x <- Array.fromFoldable <$> List.many A.uppercase
   case Array.length x > 0 of
@@ -36,7 +36,7 @@ uppercase = do
     true  -> pure $ foldMap singleton x 
 
 -- | Consumes a non-empty string of hexadecimal characters (0-f+), or fails otherwise.
-lowercase :: forall a m. S.StringLike a => Monad m => ParserT a m String
+lowercase :: forall m. Monad m => ParserT String m String
 lowercase = do
   x <- Array.fromFoldable <$> List.many A.lowercase
   case Array.length x > 0 of
@@ -44,7 +44,7 @@ lowercase = do
     true  -> pure $ foldMap singleton x 
 
 -- | Consumes a non-empty string of hexadecimal characters ((0-f|0-F)+), or fails otherwise.
-any :: forall a m. S.StringLike a => Monad m => ParserT a m String
+any :: forall m. Monad m => ParserT String m String
 any = do
   x <- Array.fromFoldable <$> List.many A.any
   case Array.length x > 0 of

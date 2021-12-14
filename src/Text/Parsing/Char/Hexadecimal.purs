@@ -21,17 +21,17 @@ uppercases :: Array Char
 uppercases = [ 'A', 'B', 'C', 'D', 'E', 'F' ]
 
 -- | Consumes a valid decimal character (0-9), or fails otherwise.
-decimal :: forall a m. S.StringLike a => Monad m => ParserT a m Char
+decimal :: forall m. Monad m => ParserT String m Char
 decimal = C.choice (S.char <$> decimals)
 
 -- | Consumes a valid uppercase hexadecimal character (A-Z|0-9), or fails otherwises.
-lowercase :: forall a m. S.StringLike a => Monad m => ParserT a m Char
+lowercase :: forall m. Monad m => ParserT String m Char
 lowercase = C.choice (S.char <$> decimals <> lowercases)
 
 -- | Consumes a valid uppercase hexadecimal character (a-z|0-9), or fails otherwises.
-uppercase :: forall a m. S.StringLike a => Monad m => ParserT a m Char
+uppercase :: forall m. Monad m => ParserT String m Char
 uppercase = C.choice (S.char <$> decimals <> uppercases)
 
 -- | Consumes a valid uppercase hexadecimal character (a-z|A-Z|0-9), or fails otherwises.
-any :: forall a m. S.StringLike a => Monad m => ParserT a m Char
+any :: forall m. Monad m => ParserT String m Char
 any = C.choice (S.char <$> decimals <> lowercases <> uppercases)
